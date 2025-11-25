@@ -33,7 +33,7 @@ jobs:
       - name: Get ZIP filename
         id: get-zip
         run: |
-          ZIP_FILE=$(ls output/*.zip | sort | tail -n 1)
+          ZIP_FILE=$(ls conv_dict/*.zip | sort | tail -n 1)
           echo "zip_file=$ZIP_FILE" >> $GITHUB_OUTPUT
           echo "tag_name=$(basename $ZIP_FILE .zip)" >> $GITHUB_OUTPUT
 

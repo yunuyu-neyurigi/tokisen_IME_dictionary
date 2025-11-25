@@ -167,3 +167,5 @@ if __name__ == "__main__":
         zipf.write('conv_dict/tokisen_songs_microsoft.txt', arcname="tokisen_songs_microsoft.txt")
         zipf.write('conv_dict/tokisen_names_google.txt', arcname="tokisen_names_google.txt")
         zipf.write('conv_dict/tokisen_names_microsoft.txt', arcname="tokisen_names_microsoft.txt")
+
+    print(f"辞書ファイルを作成しました: {zip_path}")

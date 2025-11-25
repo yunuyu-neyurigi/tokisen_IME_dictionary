@@ -12,28 +12,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: ? Checkout
+      - name: Checkout
         uses: actions/checkout@v3
 
-      - name: ? Set up Python
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
-      - name: ?? Run dictionary converter
+      - name: Run dictionary converter
         id: build
         run: |
           pip install -r requirements.txt || true
           python scripts/convert_dict.py
 
-      - name: ? Get ZIP filename
+      - name: Get ZIP filename
         id: get-zip
         run: |
           ZIP_FILE=$(ls output/dict_*.zip | sort | tail -n 1)
           echo "zip_file=$ZIP_FILE" >> $GITHUB_OUTPUT
           echo "tag_name=$(basename $ZIP_FILE .zip)" >> $GITHUB_OUTPUT
 
-      - name: ?? Create GitHub Release
+      - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ steps.get-zip.outputs.tag_name }}

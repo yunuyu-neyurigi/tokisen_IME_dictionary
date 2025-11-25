@@ -24,12 +24,12 @@ jobs:
         id: build
         run: |
           pip install -r requirements.txt || true
-          python scripts/convert_dict.py
+          python conv_dict/convert_dict.py
 
       - name: Get ZIP filename
         id: get-zip
         run: |
-          ZIP_FILE=$(ls output/dict_*.zip | sort | tail -n 1)
+          ZIP_FILE=$(ls output/*.zip | sort | tail -n 1)
           echo "zip_file=$ZIP_FILE" >> $GITHUB_OUTPUT
           echo "tag_name=$(basename $ZIP_FILE .zip)" >> $GITHUB_OUTPUT
 

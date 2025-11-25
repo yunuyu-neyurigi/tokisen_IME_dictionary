@@ -156,10 +156,10 @@ if __name__ == "__main__":
         msime_output_path='output/とき宣_人名・固有名詞辞書_microsoft.txt'
     )
 
-    # Zipファイル名：dict_YYYYMMDD_vX.zip
+    # Zipファイル名：とき宣辞書_YYYYMMDD_vX.zip
     date_str = datetime.now().strftime("%Y%m%d")
     version = get_next_version('output', date_str)
-    zip_name = f"dict_{date_str}_{version}.zip"
+    zip_name = f"とき宣辞書_{date_str}_{version}.zip"
     zip_path = os.path.join('output', zip_name)
 
     with zipfile.ZipFile(zip_path, 'w') as zipf:

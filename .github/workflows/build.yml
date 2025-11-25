@@ -24,7 +24,7 @@ jobs:
         id: build
         run: |
           # pip install -r requirements.txt || true
-          python conv_dict/convert_dict.py
+          python conv_dict/conv_dict.py
 
       - name: Get ZIP filename
         id: get-zip

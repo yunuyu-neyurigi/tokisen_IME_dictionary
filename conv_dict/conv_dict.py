@@ -146,14 +146,14 @@ if __name__ == "__main__":
 
     convert_dictionary(
         input_path='曲名.tsv',
-        google_output_path='output/とき宣_曲名辞書_google.txt',
-        msime_output_path='output/とき宣_曲名辞書_microsoft.txt'
+        google_output_path='output/tokisen_songs_google.txt',
+        msime_output_path='output/tokisen_songs_microsoft.txt'
     )
 
     convert_dictionary(
         input_path='人名・固有名詞.tsv',
-        google_output_path='output/とき宣_人名・固有名詞辞書_google.txt',
-        msime_output_path='output/とき宣_人名・固有名詞辞書_microsoft.txt'
+        google_output_path='output/tokisen_names_google.txt',
+        msime_output_path='output/tokisen_names_microsoft.txt'
     )
 
     # Zipファイル名：とき宣辞書_YYYYMMDD_vX.zip
@@ -163,7 +163,7 @@ if __name__ == "__main__":
     zip_path = os.path.join('output', zip_name)
 
     with zipfile.ZipFile(zip_path, 'w') as zipf:
-        zipf.write('output/とき宣_曲名辞書_google.txt', arcname="とき宣_曲名辞書_google.txt")
-        zipf.write('output/とき宣_曲名辞書_microsoft.txt', arcname="とき宣_曲名辞書_microsoft.txt")
-        zipf.write('output/とき宣_人名・固有名詞辞書_google.txt', arcname="とき宣_人名・固有名詞辞書_google.txt")
-        zipf.write('output/とき宣_人名・固有名詞辞書_microsoft.txt', arcname="とき宣_人名・固有名詞辞書_microsoft.txt")
+        zipf.write('output/tokisen_songs_google.txt', arcname="tokisen_songs_google.txt")
+        zipf.write('output/tokisen_songs_microsoft.txt', arcname="tokisen_songs_microsoft.txt")
+        zipf.write('output/tokisen_names_google.txt', arcname="tokisen_names_google.txt")
+        zipf.write('output/tokisen_names_microsoft.txt', arcname="tokisen_names_microsoft.txt")

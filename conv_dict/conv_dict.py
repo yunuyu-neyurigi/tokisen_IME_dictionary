@@ -123,7 +123,7 @@ def convert_dictionary(input_path, google_output_path, msime_output_path):
             google_entries.append(f"{reading}\t{word}\t{pos}\t{comment}")
 
             msime_pos = POS_MAP.get(pos, "名詞")  # 未定義なら名詞にフォールバック
-            msime_entries.append(f"{reading},{word},{msime_pos},{comment}")
+            msime_entries.append(f"{reading}\t{word}\t{msime_pos}\t{comment}")
 
     # Google日本語入力用に出力（TSV形式）
     with open(google_output_path, 'w', encoding='utf-8') as g_out:
@@ -131,12 +131,13 @@ def convert_dictionary(input_path, google_output_path, msime_output_path):
 
     # MS-IME用に出力（CSV形式）
     with open(msime_output_path, 'w', encoding='utf-16') as m_out:
+        m_out.write('!Microsoft IME Dictionary Tool\n!Version:\n!Format:WORDLIST\n!DateTime: \n\n')
         m_out.write('\n'.join(msime_entries))
 
 def get_next_version(output_dir, date_str):
     existing = [
         f for f in os.listdir(output_dir)
-        if f.startswith(f"dict_{date_str}_") and f.endswith(".zip")
+        if f.startswith(f"tokisen_dict_{date_str}_") and f.endswith(".zip")
     ]
     return f"v{len(existing) + 1}"
 
@@ -145,13 +146,13 @@ def get_next_version(output_dir, date_str):
 if __name__ == "__main__":
 
     convert_dictionary(
-        input_path='曲名.tsv',
+        input_path='songs.tsv',
         google_output_path='conv_dict/tokisen_songs_google.txt',
         msime_output_path='conv_dict/tokisen_songs_microsoft.txt'
     )
 
     convert_dictionary(
-        input_path='人名・固有名詞.tsv',
+        input_path='names.tsv',
         google_output_path='conv_dict/tokisen_names_google.txt',
         msime_output_path='conv_dict/tokisen_names_microsoft.txt'
     )
